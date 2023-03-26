@@ -26,6 +26,10 @@ transporter.verify((err, success) => {
     : console.log(`=== Server is ready to take messages: ${success} ===`);
 });
 
+app.get("/", (req, res) => {
+  res.json("hello world");
+});
+
 app.post("/send", function (req, res) {
   let mailOptions = {
     from: `${req.body.mailerState.email}`,

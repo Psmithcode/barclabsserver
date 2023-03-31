@@ -2,12 +2,22 @@ require("dotenv").config();
 const express = require("express");
 const nodemailer = require("nodemailer");
 const app = express();
+const pool = require("./sql/connection");
 const cors = require("cors");
 app.use(express.static("./public"));
 const port = process.env.PORT || "8080";
 // middleware
 app.use(express.json());
 app.use(cors());
+
+app.get("/", (req, res) => {
+  res.json("hello world");
+});
+
+let puppyRouter = require("./routes/puppyRoutes");
+app.use(puppyRouter);
+
+// NODEMAILER STUFF ////////////////////////////////////////////////////////////////////////////
 
 let transporter = nodemailer.createTransport({
   service: "gmail",
@@ -24,10 +34,6 @@ transporter.verify((err, success) => {
   err
     ? console.log(err)
     : console.log(`=== Server is ready to take messages: ${success} ===`);
-});
-
-app.get("/", (req, res) => {
-  res.json("hello world");
 });
 
 app.post("/send", function (req, res) {
@@ -51,6 +57,8 @@ app.post("/send", function (req, res) {
     }
   });
 });
+
+// //////////////////////////////////////////////////////////////////////////////////////////////
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);

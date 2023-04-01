@@ -15,7 +15,9 @@ app.get("/", (req, res) => {
 });
 
 let puppyRouter = require("./routes/puppyRoutes");
+let authRouter = require("./routes/authRoutes");
 app.use(puppyRouter);
+app.use(authRouter);
 
 // NODEMAILER STUFF ////////////////////////////////////////////////////////////////////////////
 

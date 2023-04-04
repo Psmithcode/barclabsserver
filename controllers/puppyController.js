@@ -2,15 +2,16 @@ let pool = require("../sql/connection");
 
 let createPuppy = function (req, res) {
   let sql =
-    "INSERT INTO puppies (name, date_added, text1, text2, text3, text4) VALUES (?, ?, ?, ?, ?, ?)";
+    "INSERT INTO puppies (name, image, date_added, text1, text2, text3, text4) VALUES (?, ?, ?, ?, ?, ?)";
   //   let image = req.body.image;
   let name = req.body.name;
+  let image = req.file.filename;
   let date_added = new Date();
   let text1 = req.body.text1;
   let text2 = req.body.text2;
   let text3 = req.body.text3;
   let text4 = req.body.text4;
-  let params = [name, date_added, text1, text2, text3, text4];
+  let params = [name, image, date_added, text1, text2, text3, text4];
 
   pool.query(sql, params, function (err, results) {
     if (err) {

@@ -34,7 +34,7 @@ let login = async function (req, res) {
       res.sendStatus(500);
       return;
     }
-    let admin_username = results[0].username;
+    // let admin_username = results[0].username;
     let admin_password = results[0].password;
 
     let good = password === admin_password;

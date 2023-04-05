@@ -31,6 +31,7 @@ let login = async function (req, res) {
       return;
     }
     if (results.length > 1) {
+      console.log("results too long");
       res.sendStatus(500);
       return;
     }

@@ -4,6 +4,7 @@ const nodemailer = require("nodemailer");
 const app = express();
 const pool = require("./sql/connection");
 const cors = require("cors");
+const path = require("path");
 app.use(express.static("./public"));
 const port = process.env.PORT || "8080";
 // middleware
@@ -12,6 +13,11 @@ app.use(cors());
 
 app.get("/", (req, res) => {
   res.json("hello world");
+});
+app.get("/images/:imageName", (req, res) => {
+  const imageName = req.params.imageName;
+  const imagePath = path.join(__dirname, "routes", "images", imageName);
+  res.sendFile(imagePath);
 });
 
 let puppyRouter = require("./routes/puppyRoutes");

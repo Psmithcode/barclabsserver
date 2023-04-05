@@ -4,17 +4,20 @@ const path = require("path");
 
 const multer = require("multer");
 
-const storage = multer.diskStorage({
+const storageEngine = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "../images");
+    cb(
+      null,
+      "C:\\Users\\peyto\\Documents\\devFolder\\barclabsserver\\routes\\images"
+    );
   },
   filename: (req, file, cb) => {
+    cb(null, file.originalname);
     console.log(file);
-    cb(null, Date.now() + path.extname(file.originalname));
   },
 });
 
-const upload = multer({ storage: storage });
+const upload = multer({ storage: storageEngine });
 
 let router = new express.Router();
 

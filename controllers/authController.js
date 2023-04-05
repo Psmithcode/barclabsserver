@@ -18,7 +18,7 @@ let login = async function (req, res) {
   // let userId = req.body
   let password = req.body.password;
 
-  let sql = "select password, username from admins where username = ?";
+  let sql = "select password from admins where username = ?";
   let params = [username];
   db.query(sql, params, async function (err, results) {
     if (err) {

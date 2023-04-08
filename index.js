@@ -8,7 +8,7 @@ const bodyParser = require("body-parser");
 
 const path = require("path");
 app.use(express.static("./public"));
-const port = process.env.PORT || "8080";
+const port = process.env.PORT || 8080;
 // middleware
 app.use(express.json());
 app.use(cors());

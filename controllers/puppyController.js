@@ -16,7 +16,7 @@ let createPuppy = function (req, res) {
   if (dd < 10) dd = "0" + dd;
   if (mm < 10) mm = "0" + mm;
 
-  const date_added = dd + "/" + mm + "/" + yyyy;
+  const date_added = mm + "/" + dd + "/" + yyyy;
 
   let text1 = req.body.text1;
   let text2 = req.body.text2;

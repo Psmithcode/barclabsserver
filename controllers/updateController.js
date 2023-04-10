@@ -27,4 +27,16 @@ let createUpdate = function (req, res) {
   });
 };
 
-module.exports = { createUpdate };
+let getUpdates = function (req, res) {
+  let sql = "SELECT * FROM updates";
+  pool.query(sql, function (err, results) {
+    if (err) {
+      console.log("error getting updates", err);
+      res.sendStatus(500);
+    } else {
+      res.json(results);
+    }
+  });
+};
+
+module.exports = { createUpdate, getUpdates };

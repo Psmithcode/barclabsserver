@@ -26,3 +26,5 @@ let createUpdate = function (req, res) {
     }
   });
 };
+
+module.exports = { createUpdate };

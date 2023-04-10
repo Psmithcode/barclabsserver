@@ -1,5 +1,5 @@
 const express = require("express");
 
 let router = new express.Router();
-
-router.post("/updates");
+let controller = require("../controllers/updateController");
+router.post("/updates", controller.createUpdate);

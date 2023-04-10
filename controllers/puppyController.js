@@ -26,7 +26,7 @@ let createPuppy = function (req, res) {
 
   pool.query(sql, params, function (err, results) {
     if (err) {
-      console.log("error inserting");
+      console.log("error inserting", err);
       return;
     } else {
       res.sendStatus(202);

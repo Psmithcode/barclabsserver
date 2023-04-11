@@ -3,26 +3,37 @@ let pool = require("../sql/connection");
 let createPuppy = function (req, res) {
   console.log(req.body);
   let sql =
-    "INSERT INTO puppies (name, image, date_added, text1, text2, text3, text4) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    "INSERT INTO puppies (name, image, whelped_date, ready_date, sire, dam, vaccinated, price) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
   //   let image = req.body.image;
   let name = req.body.name;
   let image = req.body.image;
   console.log(image);
-  const today = new Date();
-  const yyyy = today.getFullYear();
-  let mm = today.getMonth() + 1; // Months start at 0!
-  let dd = today.getDate();
+  // const today = new Date();
+  // const yyyy = today.getFullYear();
+  // let mm = today.getMonth() + 1; // Months start at 0!
+  // let dd = today.getDate();
 
-  if (dd < 10) dd = "0" + dd;
-  if (mm < 10) mm = "0" + mm;
+  // if (dd < 10) dd = "0" + dd;
+  // if (mm < 10) mm = "0" + mm;
 
-  const date_added = mm + "/" + dd + "/" + yyyy;
+  // const date_added = mm + "/" + dd + "/" + yyyy;
 
-  let text1 = req.body.text1;
-  let text2 = req.body.text2;
-  let text3 = req.body.text3;
-  let text4 = req.body.text4;
-  let params = [name, image, date_added, text1, text2, text3, text4];
+  let ready_date = req.body.dateReady;
+  let whelped_date = req.body.dateWhelped;
+  let sire = req.body.sire;
+  let dam = req.body.dam;
+  let price = req.body.price;
+  let vaccinated = req.body.selectedValue;
+  let params = [
+    name,
+    image,
+    whelped_date,
+    ready_date,
+    sire,
+    dam,
+    vaccinated,
+    price,
+  ];
 
   pool.query(sql, params, function (err, results) {
     if (err) {

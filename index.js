@@ -27,7 +27,9 @@ app.get("/", (req, res) => {
 let puppyRouter = require("./routes/puppyRoutes");
 let authRouter = require("./routes/authRoutes");
 let updateRouter = require("./routes/updateRoutes");
+let reviewsRouter = require("./routes/reviewsRoutes");
 app.use(updateRouter);
+app.use(reviewsRouter);
 app.use(puppyRouter);
 app.use(authRouter);
 

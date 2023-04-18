@@ -18,11 +18,7 @@ app.use(bodyParser.json());
 app.get("/", (req, res) => {
   res.json("hello world");
 });
-// app.get("/images/:imageName", (req, res) => {
-//   const imageName = req.params.imageName;
-//   const imagePath = path.join(__dirname, "routes", "images", imageName);
-//   res.sendFile(imagePath);
-// });
+
 
 let puppyRouter = require("./routes/puppyRoutes");
 let authRouter = require("./routes/authRoutes");

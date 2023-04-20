@@ -3,9 +3,10 @@ let pool = require("../sql/connection");
 let createPuppy = function (req, res) {
   console.log(req.body);
   let sql =
-    "INSERT INTO puppies (name, image, whelped_date, ready_date, sire, dam, vaccinated, price) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    "INSERT INTO puppies (name, image, whelped_date, gender, ready_date, sire, dam, vaccinated, price) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
   let name = req.body.name;
   let image = req.body.image;
+  let gender = req.body.gender
   console.log(image);
 
   let ready_date = req.body.dateReady;
@@ -17,6 +18,7 @@ let createPuppy = function (req, res) {
   let params = [
     name,
     image,
+    gender,
     whelped_date,
     ready_date,
     sire,

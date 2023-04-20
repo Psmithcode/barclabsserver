@@ -41,7 +41,7 @@ let getPuppies = function (req, res) {
   let sql = "SELECT * FROM puppies";
   pool.query(sql, function (err, results) {
     if (err) {
-      console.log("error getting puppies", err);
+      console.log("error getting puppies: ", err);
       res.sendStatus(500);
     } else {
       res.json(results);
